@@ -8,8 +8,7 @@ package sort;
 public class Main {
     public static void main(String[] args) {
         Heap heap = new Heap(Heap.HeapType.MAX);
-        heap.heapSort();
-        heap.print();
+        heap.heapSortTopK(5);
 
     }
 }

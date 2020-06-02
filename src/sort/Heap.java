@@ -2,6 +2,7 @@ package sort;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author yuanyuan.wang
@@ -42,9 +43,14 @@ public class Heap {
 
 
     public void heapSort() {
+
         if (array == null || array.length <= 1) {
             return;
         }
+
+        System.out.print("排序之前的数组：");
+        print(array);
+
 
         buildHeap();
 
@@ -53,7 +59,35 @@ public class Heap {
             heapify(0, i - 1);
         }
 
+        System.out.print("排序之后的数组：");
+        print(array);
+    }
 
+
+    public int[] heapSortTopK(int k) {
+        System.out.print("排序之前的数组:");
+        print(array);
+
+
+        if (array == null || array.length <= 1) {
+            return null;
+        }
+
+        if (k > array.length) {
+            throw new RuntimeException("k 大于数字的长度");
+        }
+
+        buildHeap();
+
+        for (int i = array.length - 1; i >= array.length - k; i--) {
+            swap(0, i);
+            heapify(0, i - 1);
+        }
+        int[] result = getKNumber(k);
+
+        System.out.print("TOP " + k + "：");
+        print(result);
+        return result;
     }
 
     /**
@@ -159,16 +193,40 @@ public class Heap {
     /**
      * 打印
      */
-    public void print() {
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + "   ");
+    public void print(int[] result) {
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i] + "   ");
         }
+        System.out.println();
+    }
+
+
+    /**
+     * 获取最后K个数
+     * @param k
+     * @return
+     */
+    private int[] getKNumber(int k) {
+
+        int [] kNumber = new int[k];
+        int lastIndex = array.length - 1;
+
+        for (int i = 0; i < k; i++) {
+            kNumber[i] = array[lastIndex - i];
+        }
+        return kNumber;
     }
 
     /**
      * 初始化数组
      */
     private void initArray() {
-        array = new int[]{2, 3, 4, 7, 8, 11, 25, 45, 12, 13};
+        Random random = new Random();
+
+        array = new int[30];
+        for (int i = 0; i < 30; i++) {
+            array[i] = random.nextInt(100);
+        }
+
     }
 }
