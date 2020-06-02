@@ -10,7 +10,7 @@ import java.util.Random;
  * @date 2020/6/2 15:41
  */
 public class Heap {
-    enum HeapType {
+    public enum HeapType {
         MAX("大顶堆"),
         MIN("小顶堆"),
         ;
