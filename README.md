@@ -7,3 +7,5 @@
 [topK问题](src/question/TopK.java)
 
 [随机数问题](src/question/RandomByGivenRandom.java)
+
+[半数问题](src/question/MoreThanHalf.java)
