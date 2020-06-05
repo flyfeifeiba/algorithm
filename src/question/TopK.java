@@ -14,8 +14,16 @@ public class TopK {
      * 空间复杂度： 0
      */
     public void topKByHeapSort()  {
-        Heap heap = new Heap(Heap.HeapType.MAX);
-        heap.heapSortTopK(5);
+//        Heap heap = new Heap(Heap.HeapType.MAX);
+//        heap.heapSortTopK(5);
+
+    }
+
+
+    public static void main(String[] args) {
+        Integer a = null;
+        Integer b = a;
+        int c = a;
     }
 
 }
